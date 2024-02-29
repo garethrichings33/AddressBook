@@ -1,13 +1,8 @@
 package com.github.garethrichings33;
-
-/**
- * Hello world!
- *
- */
-public class App 
+public class ContactsBook
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        new ContactsBookGUI();
     }
 }
