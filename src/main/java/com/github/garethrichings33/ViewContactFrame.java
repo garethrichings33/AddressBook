@@ -15,7 +15,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     Contact contact;
     public ViewContactFrame(Contact contact) {
         super();
-        frame.setTitle("Display Contact");
+        frame.setTitle("View Contact");
 
         editButtonLabel = "Edit";
         editButton = new JButton(editButtonLabel);
@@ -49,8 +49,8 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         postcodeField.setText(contact.getPostcode());
         phoneNumberField.setText(contact.getPhonenumber());
         emailField.setText(contact.getEmail());
+        contactIDField.setText(contact.getContactID());
     }
-
     private void deactivateFields() {
         firstNameField.setEditable(false);
         lastNameField.setEditable(false);
@@ -60,6 +60,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         postcodeField.setEditable(false);
         phoneNumberField.setEditable(false);
         emailField.setEditable(false);
+        contactIDField.setEditable(false);
     }
     private void activateFields() {
         firstNameField.setEditable(true);
@@ -70,8 +71,8 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         postcodeField.setEditable(true);
         phoneNumberField.setEditable(true);
         emailField.setEditable(true);
+        contactIDField.setEditable(true);
     }
-
     private void saveContact() {
         contact.setFirstName(firstNameField.getText());
         contact.setLastName(lastNameField.getText());
@@ -81,6 +82,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         contact.setPostcode(postcodeField.getText());
         contact.setPhonenumber(phoneNumberField.getText());
         contact.setEmail(emailField.getText());
+        contact.setContactID(contactIDField.getText());
     }
 
     @Override

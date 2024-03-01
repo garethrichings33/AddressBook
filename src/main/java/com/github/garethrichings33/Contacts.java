@@ -9,15 +9,15 @@ public class Contacts {
         contacts = new HashMap<>();
     }
 
-    public void addContact(String contactName, Contact contact){
-        contacts.put(contactName, contact);
+    public void addContact(String contactID, Contact contact){
+        contacts.put(contactID, contact);
     }
 
-    public void deleteContact(String contactName){
-        contacts.remove(contactName);
+    public void deleteContact(String contactID){
+        contacts.remove(contactID);
     }
 
-    public Contact getContact(String contactName){
-        return contacts.get(contactName);
+    public Contact getContact(String contactID){
+        return contacts.get(contactID);
     }
 }

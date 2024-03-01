@@ -5,14 +5,15 @@ public class Contact {
     private String lastName;
     private String phonenumber;
     private String email;
-
     private String houseNumber;
     private String street;
     private String town;
     private String postcode;
 
+    private String contactID;
+
     public Contact(String firstName, String lastName, String houseNumber, String street,
-                   String town, String postcode,String phonenumber, String email) {
+                   String town, String postcode,String phonenumber, String email, String contactID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.houseNumber = houseNumber;
@@ -21,6 +22,7 @@ public class Contact {
         this.postcode = postcode;
         this.phonenumber = phonenumber;
         this.email = email;
+        this.contactID = contactID;
     }
 
     public String getFirstName() {
@@ -53,6 +55,14 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getContactID() {
+        return contactID;
+    }
+
+    public void setContactID(String contactID) {
+        this.contactID = contactID;
     }
 
     public String getHouseNumber() {

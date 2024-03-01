@@ -1,9 +1,13 @@
 package com.github.garethrichings33;
 
 import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 public class ContactFrame {
     protected final JFrame frame;
+    protected final JTextField contactIDField;
+    protected final JLabel contactIDLabel;
     protected final JTextField firstNameField;
     protected final JLabel firstNameLabel;
     protected final JTextField lastNameField;
@@ -26,7 +30,7 @@ public class ContactFrame {
 
     public ContactFrame() {
         frame = new JFrame();
-        frame.setSize(400, 400);
+        frame.setSize(400, 440);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setVisible(true);
@@ -86,6 +90,12 @@ public class ContactFrame {
         emailField.setBounds(xField, yPosition, fieldWidth, elementHeight);
         yPosition += 40;
 
+        contactIDLabel = new JLabel("Contact ID ");
+        contactIDLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
+        contactIDField = new JTextField();
+        contactIDField.setBounds(xField, yPosition, fieldWidth, elementHeight);
+        yPosition += 40;
+
         frame.add(firstNameLabel);
         frame.add(firstNameField);
         frame.add(lastNameLabel);
@@ -102,5 +112,7 @@ public class ContactFrame {
         frame.add(phoneNumberField);
         frame.add(emailLabel);
         frame.add(emailField);
+        frame.add(contactIDLabel);
+        frame.add(contactIDField);
     }
 }
