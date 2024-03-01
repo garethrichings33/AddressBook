@@ -71,7 +71,7 @@ public class ContactsBookGUI implements ActionListener {
 
         }
         else if (command.equals(displayContactLabel)) {
-            new DisplayContactFrame(contacts.getContact("Bungle"));
+            new ViewContactFrame(contacts.getContact("Bungle"));
         }
     }
 }

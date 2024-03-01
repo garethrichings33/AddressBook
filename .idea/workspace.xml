@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/Contact.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/Contacts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/DisplayContactFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/garethrichings33/ContactsBookTest.java" afterDir="false" />
+    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Added close button to display contact frame.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/DisplayContactFrame.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +33,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.github.garethrichings33" />
@@ -63,6 +54,29 @@
       <option name="presentableId" value="Default" />
       <updated>1709226768510</updated>
     </task>
+    <task id="LOCAL-00001" summary="Beginning implementation of contacts book app.">
+      <option name="closed" value="true" />
+      <created>1709236484756</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709236484756</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed broken test template.">
+      <option name="closed" value="true" />
+      <created>1709236545713</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709236545713</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Beginning implementation of contacts book app." />
+    <MESSAGE value="Fixed broken test template." />
+    <MESSAGE value="Added close button to display contact frame." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added close button to display contact frame." />
   </component>
 </project>

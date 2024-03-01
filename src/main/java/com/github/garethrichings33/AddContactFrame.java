@@ -3,6 +3,7 @@ package com.github.garethrichings33;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class AddContactFrame extends ContactFrame implements ActionListener {
     private Contact contact;
@@ -12,11 +13,12 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
 
     public AddContactFrame(Contacts contacts) {
         super();
+        frame.setTitle("Add Contact");
 
         addButton = new JButton();
         addButtonLabel = "Add";
         addButton.setText(addButtonLabel);
-        addButton.setBounds(50, yPosition, labelWidth, elementHeight);
+        addButton.setBounds(20, yPosition, labelWidth, elementHeight);
         addButton.addActionListener(this);
         frame.add(addButton);
 
@@ -30,15 +32,11 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
         if(command.equals(addButtonLabel)){
             contact = readContactData();
             contacts.addContact(contact.getFirstName(), contact);
-            System.out.println(contact.getFirstName());
-//            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-//            var closingEvent = new WindowEvent(frame, WindowEvent.WINDOW_CLOSING);
-//            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
+            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         }
     }
 
     private Contact readContactData() {
-        System.out.println(firstNameField.isEditable());
         return new Contact(
             firstNameField.getText(),
                 lastNameField.getText(),

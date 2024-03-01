@@ -25,7 +25,7 @@ public class ContactFrame {
     protected final int elementHeight;
 
     public ContactFrame() {
-        frame = new JFrame("Add Contact");
+        frame = new JFrame();
         frame.setSize(400, 400);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
