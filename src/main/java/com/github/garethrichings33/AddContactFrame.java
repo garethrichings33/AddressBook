@@ -35,8 +35,13 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
 
         if(command.equals(addButtonLabel)){
             contact = readContactData();
-            contacts.addContact(contact.getFirstName(), contact);
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            try {
+                contacts.addContact(contact.getContactID(), contact);
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+            catch (ContactIDExistsException excp){
+                addErrorMessageLabel(excp.getMessage());
+            }
         }
     }
 

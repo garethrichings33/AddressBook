@@ -1,8 +1,6 @@
 package com.github.garethrichings33;
 
 import javax.swing.*;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 
 public class ContactFrame {
     protected final JFrame frame;
@@ -24,9 +22,12 @@ public class ContactFrame {
     protected final JLabel phoneNumberLabel;
     protected final JTextField emailField;
     protected final JLabel emailLabel;
+    private JLabel errorMessage;
     protected int yPosition;
     protected final int labelWidth;
+    protected final int longLabelWidth;
     protected final int elementHeight;
+    protected final int extraHeight;
 
     public ContactFrame() {
         frame = new JFrame();
@@ -39,8 +40,10 @@ public class ContactFrame {
         final int xField = 120;
         yPosition = 10;
         labelWidth = 100;
+        longLabelWidth = 350;
         final int fieldWidth = 250;
         elementHeight = 30;
+        extraHeight = 40;
 
         firstNameLabel = new JLabel("First Name: ");
         firstNameLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
@@ -114,5 +117,20 @@ public class ContactFrame {
         frame.add(emailField);
         frame.add(contactIDLabel);
         frame.add(contactIDField);
+    }
+
+    protected void addErrorMessageLabel(String message){
+        if(errorMessage == null) {
+            errorMessage = new JLabel(message);
+            errorMessage.setBounds(20, yPosition+extraHeight, longLabelWidth, elementHeight);
+            frame.add(errorMessage);
+        }
+        errorMessage.setVisible(true);
+        frame.setSize(frame.getWidth(), frame.getHeight()+extraHeight);
+    }
+    protected void removeErrorMessageLabel(){
+        if(errorMessage != null)
+            errorMessage.setVisible(false);
+        frame.setSize(frame.getWidth(), frame.getHeight()-extraHeight);
     }
 }

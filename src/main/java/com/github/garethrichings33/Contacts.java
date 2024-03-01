@@ -9,8 +9,15 @@ public class Contacts {
         contacts = new HashMap<>();
     }
 
-    public void addContact(String contactID, Contact contact){
+    public void addContact(String contactID, Contact contact) throws ContactIDExistsException {
+        if(contactExists(contactID))
+            throw new ContactIDExistsException();
+
         contacts.put(contactID, contact);
+    }
+
+    public boolean contactExists(String contactID){
+        return contacts.containsKey(contactID);
     }
 
     public void deleteContact(String contactID){

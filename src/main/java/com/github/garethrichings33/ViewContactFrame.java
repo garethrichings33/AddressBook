@@ -12,8 +12,11 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     private final String editButtonLabel;
     private final JButton saveButton;
     private final String saveButtonLabel;
-    Contact contact;
-    public ViewContactFrame(Contact contact) {
+    private JLabel errorMessage;
+    private String contactID;
+    private Contact contact;
+    private Contacts contacts;
+    public ViewContactFrame(String contactID, Contacts contacts) {
         super();
         frame.setTitle("View Contact");
 
@@ -35,7 +38,9 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         closeButton.addActionListener(this);
         frame.add(closeButton);
 
-        this.contact = contact;
+        this.contactID = contactID;
+        this.contacts = contacts;
+        this.contact = contacts.getContact(contactID);
         fillFields();
         deactivateFields();
     }
@@ -74,15 +79,27 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         contactIDField.setEditable(true);
     }
     private void saveContact() {
-        contact.setFirstName(firstNameField.getText());
-        contact.setLastName(lastNameField.getText());
-        contact.setHouseNumber(houseNumberField.getText());
-        contact.setStreet(streetField.getText());
-        contact.setTown(townField.getText());
-        contact.setPostcode(postcodeField.getText());
-        contact.setPhonenumber(phoneNumberField.getText());
-        contact.setEmail(emailField.getText());
-        contact.setContactID(contactIDField.getText());
+        String newContactID = contactIDField.getText();
+        var newContact = new Contact(firstNameField.getText(),
+                lastNameField.getText(), houseNumberField.getText(),
+                streetField.getText(), townField.getText(),postcodeField.getText(),
+                phoneNumberField.getText(),emailField.getText(),newContactID);
+
+        contacts.deleteContact(contactID);
+        try {
+            contacts.addContact(newContactID, newContact);
+            removeErrorMessageLabel();
+        }catch(ContactIDExistsException excp){
+            addErrorMessageLabel(excp.getMessage());
+        }
+    }
+
+    private void printContactExistsError() {
+        errorMessage = new JLabel("Contact ID already exists. Please provide a new ID.");
+        int extraHeight = 40;
+        errorMessage.setBounds(20, yPosition+extraHeight, longLabelWidth, elementHeight);
+        frame.add(errorMessage);
+        frame.setSize(frame.getWidth(), frame.getHeight()+extraHeight);
     }
 
     @Override
@@ -91,12 +108,14 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
 
         if(command.equals(editButtonLabel)){
             activateFields();
+            contacts.deleteContact(contactID);
         }
         else if(command.equals((saveButtonLabel))){
             deactivateFields();
             saveContact();
         }
         else if(command.equals(closeButtonLabel)){
+            saveContact();
             frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         }
     }
