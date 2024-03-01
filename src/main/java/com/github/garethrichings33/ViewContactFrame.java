@@ -3,6 +3,7 @@ package com.github.garethrichings33;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ViewContactFrame extends ContactFrame implements ActionListener {
@@ -16,6 +17,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     private String contactID;
     private Contact contact;
     private Contacts contacts;
+    private boolean contactSaved;
     public ViewContactFrame(String contactID, Contacts contacts) {
         super();
         frame.setTitle("View Contact");
@@ -38,11 +40,14 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         closeButton.addActionListener(this);
         frame.add(closeButton);
 
+        frame.addWindowListener(new FrameClosingAdapter());
+
         this.contactID = contactID;
         this.contacts = contacts;
         this.contact = contacts.getContact(contactID);
         fillFields();
         deactivateFields();
+        contactSaved = true;
     }
 
     private void fillFields() {
@@ -77,6 +82,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         phoneNumberField.setEditable(true);
         emailField.setEditable(true);
         contactIDField.setEditable(true);
+
     }
     private void saveContact() {
         String newContactID = contactIDField.getText();
@@ -89,17 +95,10 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         try {
             contacts.addContact(newContactID, newContact);
             removeErrorMessageLabel();
+            contactSaved = true;
         }catch(ContactIDExistsException excp){
             addErrorMessageLabel(excp.getMessage());
         }
-    }
-
-    private void printContactExistsError() {
-        errorMessage = new JLabel("Contact ID already exists. Please provide a new ID.");
-        int extraHeight = 40;
-        errorMessage.setBounds(20, yPosition+extraHeight, longLabelWidth, elementHeight);
-        frame.add(errorMessage);
-        frame.setSize(frame.getWidth(), frame.getHeight()+extraHeight);
     }
 
     @Override
@@ -108,15 +107,33 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
 
         if(command.equals(editButtonLabel)){
             activateFields();
-            contacts.deleteContact(contactID);
+            contactSaved = false;
         }
         else if(command.equals((saveButtonLabel))){
-            deactivateFields();
             saveContact();
+            deactivateFields();
         }
         else if(command.equals(closeButtonLabel)){
-            saveContact();
+            closeFrame();
+        }
+    }
+
+    private void closeFrame() {
             frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+    }
+
+    private class FrameClosingAdapter extends WindowAdapter{
+        @Override
+        public void windowClosing(WindowEvent e) {
+            if(!contactSaved)
+                checkCloseWithoutSave();
+        }
+        private void checkCloseWithoutSave(){
+            int a = JOptionPane.showConfirmDialog(frame, "Close without saving?");
+            if (a == JOptionPane.YES_OPTION)
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            else
+                frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }
     }
 }

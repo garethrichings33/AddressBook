@@ -129,8 +129,9 @@ public class ContactFrame {
         frame.setSize(frame.getWidth(), frame.getHeight()+extraHeight);
     }
     protected void removeErrorMessageLabel(){
-        if(errorMessage != null)
+        if(errorMessage != null && errorMessage.isVisible()) {
             errorMessage.setVisible(false);
-        frame.setSize(frame.getWidth(), frame.getHeight()-extraHeight);
+            frame.setSize(frame.getWidth(), frame.getHeight() - extraHeight);
+        }
     }
 }
