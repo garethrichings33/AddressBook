@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class ContactFrame {
     protected final JFrame frame;
+    protected final ContactsBookGUI parentFrame;
     protected final JTextField contactIDField;
     protected final JLabel contactIDLabel;
     protected final JTextField firstNameField;
@@ -29,7 +30,9 @@ public class ContactFrame {
     protected final int elementHeight;
     protected final int extraHeight;
 
-    public ContactFrame() {
+    public ContactFrame(ContactsBookGUI parentFrame) {
+        this.parentFrame = parentFrame;
+
         frame = new JFrame();
         frame.setSize(400, 440);
         frame.setLayout(null);

@@ -13,8 +13,8 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
     private JButton addButton;
     private String addButtonLabel;
 
-    public AddContactFrame(Contacts contacts) {
-        super();
+    public AddContactFrame(Contacts contacts, ContactsBookGUI parentFrame) {
+        super(parentFrame);
         frame.setTitle("Add Contact");
 
         firstNameField.addCaretListener(new Caret());
@@ -37,6 +37,7 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
             contact = readContactData();
             try {
                 contacts.addContact(contact.getContactID(), contact);
+                parentFrame.updateContactsList();
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
             catch (ContactIDExistsException excp){

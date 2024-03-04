@@ -18,8 +18,8 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     private Contact contact;
     private Contacts contacts;
     private boolean contactSaved;
-    public ViewContactFrame(String contactID, Contacts contacts) {
-        super();
+    public ViewContactFrame(String contactID, Contacts contacts, ContactsBookGUI parentFrame) {
+        super(parentFrame);
         frame.setTitle("View Contact");
 
         editButtonLabel = "Edit";
@@ -119,7 +119,8 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     }
 
     private void closeFrame() {
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+        parentFrame.repaint();
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 
     private class FrameClosingAdapter extends WindowAdapter{

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Checks for uniqueness of contactID.">
+    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Checks whether edited contact is saved before closing view contact frame.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/Contacts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/Contacts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709315363981</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Checks whether edited contact is saved before closing view contact frame.">
+      <option name="closed" value="true" />
+      <created>1709320425535</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709320425535</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -101,6 +113,7 @@
     <MESSAGE value="Added edit and save buttons to view contact frame." />
     <MESSAGE value="Added contactID field." />
     <MESSAGE value="Checks for uniqueness of contactID." />
-    <option name="LAST_COMMIT_MESSAGE" value="Checks for uniqueness of contactID." />
+    <MESSAGE value="Checks whether edited contact is saved before closing view contact frame." />
+    <option name="LAST_COMMIT_MESSAGE" value="Checks whether edited contact is saved before closing view contact frame." />
   </component>
 </project>

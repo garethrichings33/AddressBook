@@ -1,6 +1,9 @@
 package com.github.garethrichings33;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class Contacts {
     private HashMap<String, Contact> contacts;
@@ -26,5 +29,17 @@ public class Contacts {
 
     public Contact getContact(String contactID){
         return contacts.get(contactID);
+    }
+
+    public ArrayList<String> getAllContactIDs(){
+        int numberOfContacts = contacts.size();
+        ArrayList<String> contactsList = new ArrayList<>();
+        int i = 0;
+        for(String contactID : contacts.keySet())
+            contactsList.add(contactID);
+
+        Collections.sort(contactsList);
+
+        return contactsList;
     }
 }
