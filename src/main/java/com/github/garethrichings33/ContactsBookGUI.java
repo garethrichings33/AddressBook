@@ -23,34 +23,45 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
     int buttonWidth = 150;
     JList<String> contactsList;
     Contacts contacts;
+    Color backgroundColour;
 
     public ContactsBookGUI() {
         contacts = new Contacts();
 
+        backgroundColour = new Color(52, 174, 235);
         setTitle("Contacts Book");
         setSize(new Dimension(400, 400));
         setLayout(new GridLayout(2,1));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBackground(backgroundColour);
 
+        addcontactsListPanel();
+        addcontrolPanel();
+
+        //        This line must come after all components have been defined and added to the frame.
+        setVisible(true);
+    }
+
+    private void addcontactsListPanel() {
         contactListPanel = new JPanel();
         contactListPanel.setLayout(new BorderLayout());
         contactListPane = new JScrollPane(new JList<String>());
         contactListPane.setPreferredSize(new Dimension(300, 300));
         contactListPanel.add(contactListPane);
         getContentPane().add(contactListPanel);
+    }
 
+    private void addcontrolPanel() {
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
-        add(controlPanel);
+        controlPanel.setBackground(backgroundColour);
+        getContentPane().add(controlPanel);
         controlPanel.add(createControlPanel());
-
-//        pack();
-//        This line must come after all components have been defined and added to the frame.
-        setVisible(true);
     }
 
     public void updateContactsList(){
         contactsList = new JList<>(getIDsList());
+        contactsList.setFont(new Font("Arial", Font.PLAIN, 14));
         contactsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ListSelectionModel select = contactsList.getSelectionModel();
         select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -84,18 +95,19 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
     }
 
     private JPanel createControlPanel() {
+        Font buttonFont = new Font("Arial", Font.PLAIN, 14);
         var gridLayout = new GridBagLayout();
         var gbc = new GridBagConstraints();
 
         var panel = new JPanel(gridLayout);
-        panel.setBackground(new Color(52, 174, 235));
-//        panel.setSize(300, 300);
+        panel.setBackground(backgroundColour);
 
         addContact = new JButton();
         addContactLabel = "Add Contact";
         addContact.setText(addContactLabel);
         addContact.addActionListener(this);
         addContact.setSize(buttonWidth ,buttonHeight);
+        addContact.setFont(buttonFont);
 
         deleteContact = new JButton();
         deleteContactLabel = "Delete Contact";
@@ -103,6 +115,7 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
         deleteContact.addActionListener(this);
         deleteContact.setSize(buttonWidth, buttonHeight);
         deleteContact.setEnabled(false);
+        deleteContact.setFont(buttonFont);
 
         displayContact = new JButton();
         displayContactLabel = "Display Contact";
@@ -110,6 +123,7 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
         displayContact.addActionListener(this);
         displayContact.setSize(buttonWidth, buttonHeight);
         displayContact.setEnabled(false);
+        displayContact.setFont(buttonFont);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;

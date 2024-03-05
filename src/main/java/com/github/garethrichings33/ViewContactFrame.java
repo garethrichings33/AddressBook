@@ -28,12 +28,14 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
 
         editButtonLabel = "Edit";
         editButton = new JButton(editButtonLabel);
+        editButton.setFont(buttonFont);
         editButton.setBounds(20, yPosition, labelWidth, elementHeight);
         editButton.addActionListener(this);
         frame.add(editButton);
 
         saveButtonLabel = "Save";
         saveButton = new JButton(saveButtonLabel);
+        saveButton.setFont(buttonFont);
         saveButton.setBounds(120, yPosition, labelWidth, elementHeight);
         saveButton.addActionListener(this);
         saveButton.setEnabled(false);
@@ -41,6 +43,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
 
         closeButtonLabel = "Close";
         closeButton = new JButton(closeButtonLabel);
+        closeButton.setFont(buttonFont);
         closeButton.setBounds(220, yPosition, labelWidth, elementHeight);
         closeButton.addActionListener(this);
         frame.add(closeButton);

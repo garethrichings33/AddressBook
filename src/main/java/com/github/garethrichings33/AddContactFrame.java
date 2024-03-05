@@ -21,6 +21,7 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
 
         addButton = new JButton();
         addButtonLabel = "Add";
+        addButton.setFont(buttonFont);
         addButton.setText(addButtonLabel);
         addButton.setBounds(20, yPosition, labelWidth, elementHeight);
         addButton.addActionListener(this);
