@@ -30,20 +30,17 @@ public class ContactFrame {
     protected final int longLabelWidth;
     protected final int elementHeight;
     protected final int extraHeight;
-    protected final Color backgroundColour;
     protected Font buttonFont;
 
     public ContactFrame(ContactsBookGUI parentFrame) {
         this.parentFrame = parentFrame;
 
-        backgroundColour = new Color(52, 174, 235);
         buttonFont = new Font("Arial", Font.PLAIN, 14);
 
         frame = new JFrame();
         frame.setSize(400, 440);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setBackground(backgroundColour);
 
         final int xLabel = 20;
         final int xField = 120;

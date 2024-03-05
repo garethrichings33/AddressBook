@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Implemented delete contact.&#10;Added verification for contact fields.">
+    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Cosmetic changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -117,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709658159621</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cosmetic changes">
+      <option name="closed" value="true" />
+      <created>1709660099873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709660099873</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -130,6 +140,7 @@
     <MESSAGE value="Checks whether edited contact is saved before closing view contact frame." />
     <MESSAGE value="Changes to layout of main frame.&#10;Added scrollable list of contacts." />
     <MESSAGE value="Implemented delete contact.&#10;Added verification for contact fields." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented delete contact.&#10;Added verification for contact fields." />
+    <MESSAGE value="Cosmetic changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cosmetic changes" />
   </component>
 </project>

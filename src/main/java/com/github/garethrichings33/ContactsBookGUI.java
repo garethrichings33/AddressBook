@@ -1,5 +1,7 @@
 package com.github.garethrichings33;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -21,48 +23,58 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
     String displayContactLabel;
     int buttonHeight = 30;
     int buttonWidth = 150;
+    int contactsPanelWidth = 300;
+    int contactsPanelHeight = 300;
     JList<String> contactsList;
     Contacts contacts;
-    Color backgroundColour;
 
     public ContactsBookGUI() {
+        try{
+            UIManager.setLookAndFeel(new FlatDarculaLaf());
+        }catch(Exception ex){
+            System.err.println("Failed to initialise theme. Using fallback.");
+        }
+
         contacts = new Contacts();
 
-        backgroundColour = new Color(52, 174, 235);
         setTitle("Contacts Book");
         setSize(new Dimension(400, 400));
-        setLayout(new GridLayout(2,1));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBackground(backgroundColour);
 
-        addcontactsListPanel();
-        addcontrolPanel();
+        addPanels();
 
         //        This line must come after all components have been defined and added to the frame.
         setVisible(true);
     }
 
-    private void addcontactsListPanel() {
+    private void addPanels() {
+        setLayout(new GridBagLayout());
+        var gbc = new GridBagConstraints();
+
+        createContactsListPanel();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(contactListPanel, gbc);
+
+        createControlPanel();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(controlPanel, gbc);
+    }
+
+    private void createContactsListPanel() {
         contactListPanel = new JPanel();
         contactListPanel.setLayout(new BorderLayout());
         contactListPane = new JScrollPane(new JList<String>());
-        contactListPane.setPreferredSize(new Dimension(300, 300));
+        contactListPane.setPreferredSize(new Dimension(contactsPanelWidth, contactsPanelHeight));
         contactListPanel.add(contactListPane);
-        getContentPane().add(contactListPanel);
-    }
-
-    private void addcontrolPanel() {
-        controlPanel = new JPanel();
-        controlPanel.setLayout(new FlowLayout());
-        controlPanel.setBackground(backgroundColour);
-        getContentPane().add(controlPanel);
-        controlPanel.add(createControlPanel());
     }
 
     public void updateContactsList(){
         contactsList = new JList<>(getIDsList());
         contactsList.setFont(new Font("Arial", Font.PLAIN, 14));
-        contactsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ListSelectionModel select = contactsList.getSelectionModel();
         select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         select.addListSelectionListener(new ListSelectionListener() {
@@ -73,17 +85,21 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
                 deleteContact.setEnabled(true);
             }
         });
-        contactListPane = new JScrollPane(contactsList);
-        contactListPanel.removeAll();
-        contactListPanel.add(contactListPane);
-        contactListPanel.repaint();
-        contactListPanel.revalidate();
+        addUpdatedContactsListToPanel();
 
         if(contactsList.getModel().getSize() == 0){
             displayContact.setEnabled(false);
             deleteContact.setEnabled(false);
         }
+    }
 
+    private void addUpdatedContactsListToPanel() {
+        contactListPane = new JScrollPane(contactsList);
+        contactListPane.setPreferredSize(new Dimension(contactsPanelWidth, contactsPanelHeight));
+        contactListPanel.removeAll();
+        contactListPanel.add(contactListPane);
+        contactListPanel.repaint();
+        contactListPanel.revalidate();
     }
 
     private DefaultListModel<String> getIDsList(){
@@ -94,13 +110,12 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
         return list;
     }
 
-    private JPanel createControlPanel() {
+    private void createControlPanel() {
         Font buttonFont = new Font("Arial", Font.PLAIN, 14);
         var gridLayout = new GridBagLayout();
         var gbc = new GridBagConstraints();
 
-        var panel = new JPanel(gridLayout);
-        panel.setBackground(backgroundColour);
+        controlPanel = new JPanel(gridLayout);
 
         addContact = new JButton();
         addContactLabel = "Add Contact";
@@ -128,19 +143,17 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
-        panel.add(addContact, gbc);
+        controlPanel.add(addContact, gbc);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 1;
         gbc.gridy = 0;
-        panel.add(deleteContact);
+        controlPanel.add(deleteContact);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 2;
         gbc.gridy = 0;
-        panel.add(displayContact);
-
-        return panel;
+        controlPanel.add(displayContact);
     }
 
     @Override
