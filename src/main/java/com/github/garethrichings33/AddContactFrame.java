@@ -34,8 +34,8 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
         String command = e.getActionCommand();
 
         if(command.equals(addButtonLabel)){
-            contact = readContactData();
             try {
+                contact = readContactData();
                 contacts.addContact(contact.getContactID(), contact);
                 parentFrame.updateContactsList();
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
@@ -43,10 +43,12 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
             catch (ContactIDExistsException excp){
                 addErrorMessageLabel(excp.getMessage());
             }
+            catch (IllegalArgumentException excp){}
         }
     }
 
-    private Contact readContactData() {
+    private Contact readContactData() throws IllegalArgumentException{
+
         return new Contact(
             firstNameField.getText(),
                 lastNameField.getText(),

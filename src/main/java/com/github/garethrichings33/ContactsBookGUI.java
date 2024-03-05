@@ -1,6 +1,8 @@
 package com.github.garethrichings33;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +21,7 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
     String displayContactLabel;
     int buttonHeight = 30;
     int buttonWidth = 150;
+    JList<String> contactsList;
     Contacts contacts;
 
     public ContactsBookGUI() {
@@ -31,7 +34,7 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
 
         contactListPanel = new JPanel();
         contactListPanel.setLayout(new BorderLayout());
-        contactListPane = new JScrollPane(createContactsList());
+        contactListPane = new JScrollPane(new JList<String>());
         contactListPane.setPreferredSize(new Dimension(300, 300));
         contactListPanel.add(contactListPane);
         getContentPane().add(contactListPanel);
@@ -46,20 +49,30 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    private JList<String> createContactsList() {
-        JList<String> list = new JList<>(getIDsList());
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        return list;
-    }
-
     public void updateContactsList(){
-        JList<String> list = new JList<>(getIDsList());
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        contactListPane = new JScrollPane(list);
+        contactsList = new JList<>(getIDsList());
+        contactsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ListSelectionModel select = contactsList.getSelectionModel();
+        select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        select.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                String id = contactsList.getSelectedValue();
+                displayContact.setEnabled(true);
+                deleteContact.setEnabled(true);
+            }
+        });
+        contactListPane = new JScrollPane(contactsList);
         contactListPanel.removeAll();
         contactListPanel.add(contactListPane);
         contactListPanel.repaint();
         contactListPanel.revalidate();
+
+        if(contactsList.getModel().getSize() == 0){
+            displayContact.setEnabled(false);
+            deleteContact.setEnabled(false);
+        }
+
     }
 
     private DefaultListModel<String> getIDsList(){
@@ -119,15 +132,30 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+        String id="";
+
+        if(contactsList != null && contactsList.getSelectedIndex() != -1)
+            id = contactsList.getSelectedValue();
 
         if(command.equals(addContactLabel)){
             new AddContactFrame(contacts, this);
         }
-        else if (command.equals(deleteContact)) {
-
+        else if (command.equals(deleteContactLabel)) {
+            contactDelete(id);
         }
         else if (command.equals(displayContactLabel)) {
-            new ViewContactFrame("Bungle", contacts, this);
+            new ViewContactFrame(id, contacts, this);
+        }
+    }
+
+    private void contactDelete(String id) {
+        int a = JOptionPane.showConfirmDialog(this,
+                "Really delete contact: " + id + "?",
+                "Confirm contact delete",
+                JOptionPane.YES_NO_OPTION);
+        if (a == JOptionPane.YES_OPTION) {
+            contacts.deleteContact(id);
+            updateContactsList();
         }
     }
 }
