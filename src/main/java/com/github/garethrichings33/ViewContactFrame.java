@@ -3,18 +3,19 @@ package com.github.garethrichings33;
 import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ViewContactFrame extends ContactFrame implements ActionListener {
-    private final JButton closeButton;
-    private final String closeButtonLabel;
-    private final JButton editButton;
-    private final String editButtonLabel;
-    private final JButton saveButton;
-    private final String saveButtonLabel;
+    private JButton closeButton;
+    private String closeButtonLabel;
+    private JButton editButton;
+    private String editButtonLabel;
+    private JButton saveButton;
+    private String saveButtonLabel;
     private JLabel errorMessage;
     private String contactID;
     private Contact contact;
@@ -22,31 +23,43 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     private boolean contactSaved;
     private boolean editButtonPressed;
     private Contact newContact;
+    private JPanel controlPanel;
+
     public ViewContactFrame(String contactID, Contacts contacts, ContactsBookGUI parentFrame) {
         super(parentFrame);
         frame.setTitle("View Contact");
 
-        editButtonLabel = "Edit";
-        editButton = new JButton(editButtonLabel);
-        editButton.setFont(buttonFont);
-        editButton.setBounds(20, yPosition, labelWidth, elementHeight);
-        editButton.addActionListener(this);
-        frame.add(editButton);
+        controlPanel = createControlPanel();
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weighty = 0.1;
+        frame.add(controlPanel, gbc);
 
-        saveButtonLabel = "Save";
-        saveButton = new JButton(saveButtonLabel);
-        saveButton.setFont(buttonFont);
-        saveButton.setBounds(120, yPosition, labelWidth, elementHeight);
-        saveButton.addActionListener(this);
-        saveButton.setEnabled(false);
-        frame.add(saveButton);
-
-        closeButtonLabel = "Close";
-        closeButton = new JButton(closeButtonLabel);
-        closeButton.setFont(buttonFont);
-        closeButton.setBounds(220, yPosition, labelWidth, elementHeight);
-        closeButton.addActionListener(this);
-        frame.add(closeButton);
+//        editButtonLabel = "Edit";
+//        editButton = new JButton(editButtonLabel);
+//        editButton.setFont(buttonFont);
+//        editButton.setBounds(20, yPosition, labelWidth, elementHeight);
+//        editButton.addActionListener(this);
+//        gbc = new GridBagConstraints();
+//        gbc.fill = GridBagConstraints.NONE;
+//        frame.add(editButton);
+//
+//        saveButtonLabel = "Save";
+//        saveButton = new JButton(saveButtonLabel);
+//        saveButton.setFont(buttonFont);
+//        saveButton.setBounds(120, yPosition, labelWidth, elementHeight);
+//        saveButton.addActionListener(this);
+//        saveButton.setEnabled(false);
+//        frame.add(saveButton);
+//
+//        closeButtonLabel = "Close";
+//        closeButton = new JButton(closeButtonLabel);
+//        closeButton.setFont(buttonFont);
+//        closeButton.setBounds(220, yPosition, labelWidth, elementHeight);
+//        closeButton.addActionListener(this);
+//        frame.add(closeButton);
 
         frame.addWindowListener(new FrameClosingAdapter());
 
@@ -59,6 +72,46 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         contactSaved = true;
         editButtonPressed = false;
     }
+
+    private JPanel createControlPanel() {
+        var gridLayout = new GridBagLayout();
+        var panel = new JPanel(gridLayout);
+        GridBagConstraints gbc;
+
+        editButtonLabel = "Edit";
+        editButton = new JButton(editButtonLabel);
+        editButton.setFont(buttonFont);
+        editButton.addActionListener(this);
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(editButton, gbc);
+
+        saveButtonLabel = "Save";
+        saveButton = new JButton(saveButtonLabel);
+        saveButton.setFont(buttonFont);
+        saveButton.addActionListener(this);
+        saveButton.setEnabled(false);
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        panel.add(saveButton, gbc);
+
+        closeButtonLabel = "Close";
+        closeButton = new JButton(closeButtonLabel);
+        closeButton.setFont(buttonFont);
+        closeButton.addActionListener(this);
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        panel.add(closeButton, gbc);
+
+        return panel;
+    }
+
     private void addCaretListeners() {
         Caret caret = new Caret();
         firstNameField.addCaretListener(caret);

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Cosmetic changes">
+    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="New L&amp;F added.&#10;&#10;Improved layout of main frame.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/AddContactFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ViewContactFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709660099873</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="New L&amp;F added.&#10;&#10;Improved layout of main frame.">
+      <option name="closed" value="true" />
+      <created>1709664759398</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709664759398</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -141,6 +149,7 @@
     <MESSAGE value="Changes to layout of main frame.&#10;Added scrollable list of contacts." />
     <MESSAGE value="Implemented delete contact.&#10;Added verification for contact fields." />
     <MESSAGE value="Cosmetic changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cosmetic changes" />
+    <MESSAGE value="New L&amp;F added.&#10;&#10;Improved layout of main frame." />
+    <option name="LAST_COMMIT_MESSAGE" value="New L&amp;F added.&#10;&#10;Improved layout of main frame." />
   </component>
 </project>

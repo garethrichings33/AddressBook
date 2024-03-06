@@ -3,6 +3,7 @@ package com.github.garethrichings33;
 import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -23,9 +24,14 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
         addButtonLabel = "Add";
         addButton.setFont(buttonFont);
         addButton.setText(addButtonLabel);
-        addButton.setBounds(20, yPosition, labelWidth, elementHeight);
+//        addButton.setBounds(20, yPosition, labelWidth, elementHeight);
         addButton.addActionListener(this);
-        frame.add(addButton);
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weighty= 0.1;
+        frame.add(addButton, gbc);
 
         this.contacts = contacts;
     }

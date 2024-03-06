@@ -6,140 +6,233 @@ import java.awt.*;
 public class ContactFrame {
     protected final JFrame frame;
     protected final ContactsBookGUI parentFrame;
-    protected final JTextField contactIDField;
-    protected final JLabel contactIDLabel;
-    protected final JTextField firstNameField;
-    protected final JLabel firstNameLabel;
-    protected final JTextField lastNameField;
-    protected final JLabel lastNameLabel;
-    protected final JTextField houseNumberField;
-    protected final JLabel houseNumberLabel;
-    protected final JTextField streetField;
-    protected final JLabel streetLabel;
-    protected final JTextField townField;
-    protected final JLabel townLabel;
-    protected final JTextField postcodeField;
-    protected final JLabel postcodeLabel;
-    protected final JTextField phoneNumberField;
-    protected final JLabel phoneNumberLabel;
-    protected final JTextField emailField;
-    protected final JLabel emailLabel;
+    protected JTextField contactIDField;
+    protected JLabel contactIDLabel;
+    protected JTextField firstNameField;
+    protected JLabel firstNameLabel;
+    protected JTextField lastNameField;
+    protected JLabel lastNameLabel;
+    protected JTextField houseNumberField;
+    protected JLabel houseNumberLabel;
+    protected JTextField streetField;
+    protected JLabel streetLabel;
+    protected JTextField townField;
+    protected JLabel townLabel;
+    protected JTextField postcodeField;
+    protected JLabel postcodeLabel;
+    protected JTextField phoneNumberField;
+    protected JLabel phoneNumberLabel;
+    protected JTextField emailField;
+    protected JLabel emailLabel;
     private JLabel errorMessage;
     protected int yPosition;
-    protected final int labelWidth;
-    protected final int longLabelWidth;
     protected final int elementHeight;
-    protected final int extraHeight;
+    protected final int extraFrameHeight;
     protected Font buttonFont;
+    protected JPanel contactPanel;
+    protected GridBagConstraints gbc;
+    private Dimension fieldDimension;
 
     public ContactFrame(ContactsBookGUI parentFrame) {
         this.parentFrame = parentFrame;
 
         buttonFont = new Font("Arial", Font.PLAIN, 14);
 
+        var gridLayout = new GridBagLayout();
+
         frame = new JFrame();
         frame.setSize(400, 440);
-        frame.setLayout(null);
+        frame.setLayout(gridLayout);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-        final int xLabel = 20;
-        final int xField = 120;
-        yPosition = 10;
-        labelWidth = 100;
-        longLabelWidth = 350;
-        final int fieldWidth = 250;
+        extraFrameHeight = 40;
+
+        final int fieldWidth = frame.getWidth() - 150;
         elementHeight = 30;
-        extraHeight = 40;
+        fieldDimension = new Dimension(fieldWidth, elementHeight);
 
-        firstNameLabel = new JLabel("First Name: ");
-        firstNameLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        firstNameField = new JTextField();
-        firstNameField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        lastNameLabel = new JLabel("Last Name: ");
-        lastNameLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        lastNameField = new JTextField();
-        lastNameField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        houseNumberLabel = new JLabel("House number: ");
-        houseNumberLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        houseNumberField = new JTextField();
-        houseNumberField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        streetLabel = new JLabel("Street: ");
-        streetLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        streetField = new JTextField();
-        streetField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        townLabel = new JLabel("Town: ");
-        townLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        townField = new JTextField();
-        townField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        postcodeLabel = new JLabel("Postcode: ");
-        postcodeLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        postcodeField = new JTextField();
-        postcodeField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        phoneNumberLabel = new JLabel("Phone number: ");
-        phoneNumberLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        phoneNumberField = new JTextField();
-        phoneNumberField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        emailLabel = new JLabel("Email address: ");
-        emailLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        emailField = new JTextField();
-        emailField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        contactIDLabel = new JLabel("Contact ID ");
-        contactIDLabel.setBounds(xLabel, yPosition , labelWidth, elementHeight);
-        contactIDField = new JTextField();
-        contactIDField.setBounds(xField, yPosition, fieldWidth, elementHeight);
-        yPosition += 40;
-
-        frame.add(firstNameLabel);
-        frame.add(firstNameField);
-        frame.add(lastNameLabel);
-        frame.add(lastNameField);
-        frame.add(houseNumberLabel);
-        frame.add(houseNumberField);
-        frame.add(streetLabel);
-        frame.add(streetField);
-        frame.add(townLabel);
-        frame.add(townField);
-        frame.add(postcodeLabel);
-        frame.add(postcodeField);
-        frame.add(phoneNumberLabel);
-        frame.add(phoneNumberField);
-        frame.add(emailLabel);
-        frame.add(emailField);
-        frame.add(contactIDLabel);
-        frame.add(contactIDField);
+        contactPanel = createContactPanel();
+//        contactPanel.setMinimumSize(new Dimension(frame.getWidth(), 0));
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weighty = 0.1;
+        frame.add(contactPanel, gbc);
 
         frame.setVisible(true);
+    }
+
+    private JPanel createContactPanel() {
+        var gridLayout = new GridBagLayout();
+        GridBagConstraints gbcContactPanel;
+
+        var panel = new JPanel(gridLayout);
+
+        firstNameLabel = new JLabel("First Name: ");
+        firstNameField = new JTextField();
+        firstNameField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 0;
+        panel.add(firstNameLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 0;
+        panel.add(firstNameField, gbcContactPanel);
+
+        lastNameLabel = new JLabel("Last Name: ");
+        lastNameField = new JTextField();
+        lastNameField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 1;
+        panel.add(lastNameLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 1;
+        panel.add(lastNameField, gbcContactPanel);
+
+        houseNumberLabel = new JLabel("House number: ");
+        houseNumberField = new JTextField();
+        houseNumberField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 2;
+        panel.add(houseNumberLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 2;
+        panel.add(houseNumberField, gbcContactPanel);
+
+        streetLabel = new JLabel("Street: ");
+        streetField = new JTextField();
+        streetField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 3;
+        panel.add(streetLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 3;
+        panel.add(streetField, gbcContactPanel);
+
+        townLabel = new JLabel("Town: ");
+        townField = new JTextField();
+        townField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 4;
+        panel.add(townLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 4;
+        panel.add(townField, gbcContactPanel);
+
+        postcodeLabel = new JLabel("Postcode: ");
+        postcodeField = new JTextField();
+        postcodeField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 5;
+        panel.add(postcodeLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 5;
+        panel.add(postcodeField, gbcContactPanel);
+
+        phoneNumberLabel = new JLabel("Phone number: ");
+        phoneNumberField = new JTextField();
+        phoneNumberField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 6;
+        panel.add(phoneNumberLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 6;
+        panel.add(phoneNumberField, gbcContactPanel);
+
+        emailLabel = new JLabel("Email address: ");
+        emailField = new JTextField();
+        emailField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 7;
+        panel.add(emailLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 7;
+        panel.add(emailField, gbcContactPanel);
+
+        contactIDLabel = new JLabel("Contact ID ");
+        contactIDField = new JTextField();
+        contactIDField.setPreferredSize(fieldDimension);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 0;
+        gbcContactPanel.gridy = 8;
+        panel.add(contactIDLabel, gbcContactPanel);
+
+        gbcContactPanel  = new GridBagConstraints();
+        gbcContactPanel.fill = GridBagConstraints.HORIZONTAL;
+        gbcContactPanel.gridx = 1;
+        gbcContactPanel.gridy = 8;
+        panel.add(contactIDField, gbcContactPanel);
+
+        return panel;
     }
 
     protected void addErrorMessageLabel(String message){
         if(errorMessage == null) {
             errorMessage = new JLabel(message);
-            errorMessage.setBounds(20, yPosition+extraHeight, longLabelWidth, elementHeight);
-            frame.add(errorMessage);
+            gbc = new GridBagConstraints();
+            gbc.fill = GridBagConstraints.NONE;
+            gbc.gridx = 0;
+            gbc.gridy = 2;
+            gbc.weighty = 0.1;
+            frame.add(errorMessage, gbc);
         }
         errorMessage.setVisible(true);
-        frame.setSize(frame.getWidth(), frame.getHeight()+extraHeight);
+        frame.setSize(frame.getWidth(), frame.getHeight()+extraFrameHeight);
     }
     protected void removeErrorMessageLabel(){
         if(errorMessage != null && errorMessage.isVisible()) {
             errorMessage.setVisible(false);
-            frame.setSize(frame.getWidth(), frame.getHeight() - extraHeight);
+            frame.setSize(frame.getWidth(), frame.getHeight() - extraFrameHeight);
         }
     }
 }
