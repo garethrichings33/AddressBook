@@ -1,7 +1,5 @@
 package com.github.garethrichings33;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -10,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ContactsBookGUI extends JFrame implements ActionListener {
+public class AddressBookGUI extends JFrame implements ActionListener {
     JScrollPane contactListPane;
     JPanel contactListPanel;
     JPanel controlPanel;
@@ -27,13 +25,7 @@ public class ContactsBookGUI extends JFrame implements ActionListener {
     JList<String> contactsList;
     Contacts contacts;
 
-    public ContactsBookGUI() {
-        try{
-            UIManager.setLookAndFeel(new FlatDarculaLaf());
-        }catch(Exception ex){
-            System.err.println("Failed to initialise theme. Using fallback.");
-        }
-
+    public AddressBookGUI() {
         contacts = new Contacts();
 
         setTitle("Contacts Book");

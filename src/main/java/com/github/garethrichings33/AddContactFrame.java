@@ -14,7 +14,7 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
     private JButton addButton;
     private String addButtonLabel;
 
-    public AddContactFrame(Contacts contacts, ContactsBookGUI parentFrame) {
+    public AddContactFrame(Contacts contacts, AddressBookGUI parentFrame) {
         super(parentFrame);
         frame.setTitle("Add Contact");
 

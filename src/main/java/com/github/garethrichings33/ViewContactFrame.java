@@ -25,7 +25,7 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
     private Contact newContact;
     private JPanel controlPanel;
 
-    public ViewContactFrame(String contactID, Contacts contacts, ContactsBookGUI parentFrame) {
+    public ViewContactFrame(String contactID, Contacts contacts, AddressBookGUI parentFrame) {
         super(parentFrame);
         frame.setTitle("View Contact");
 

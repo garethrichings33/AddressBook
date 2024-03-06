@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ContactFrame {
     protected final JFrame frame;
-    protected final ContactsBookGUI parentFrame;
+    protected final AddressBookGUI parentFrame;
     protected JTextField contactIDField;
     protected JLabel contactIDLabel;
     protected JTextField firstNameField;
@@ -33,7 +33,7 @@ public class ContactFrame {
     protected GridBagConstraints gbc;
     private Dimension fieldDimension;
 
-    public ContactFrame(ContactsBookGUI parentFrame) {
+    public ContactFrame(AddressBookGUI parentFrame) {
         this.parentFrame = parentFrame;
 
         buttonFont = new Font("Arial", Font.PLAIN, 14);
