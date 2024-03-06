@@ -24,7 +24,6 @@ public class AddContactFrame extends ContactFrame implements ActionListener {
         addButtonLabel = "Add";
         addButton.setFont(buttonFont);
         addButton.setText(addButtonLabel);
-//        addButton.setBounds(20, yPosition, labelWidth, elementHeight);
         addButton.addActionListener(this);
         gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.NONE;

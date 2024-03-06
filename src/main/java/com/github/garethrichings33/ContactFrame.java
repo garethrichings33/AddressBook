@@ -52,7 +52,6 @@ public class ContactFrame {
         fieldDimension = new Dimension(fieldWidth, elementHeight);
 
         contactPanel = createContactPanel();
-//        contactPanel.setMinimumSize(new Dimension(frame.getWidth(), 0));
         gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;

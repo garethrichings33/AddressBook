@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ContactsBookGUI extends JFrame implements ActionListener {
-//    JFrame frame;
     JScrollPane contactListPane;
     JPanel contactListPanel;
     JPanel controlPanel;

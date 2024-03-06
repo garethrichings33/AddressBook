@@ -37,30 +37,6 @@ public class ViewContactFrame extends ContactFrame implements ActionListener {
         gbc.weighty = 0.1;
         frame.add(controlPanel, gbc);
 
-//        editButtonLabel = "Edit";
-//        editButton = new JButton(editButtonLabel);
-//        editButton.setFont(buttonFont);
-//        editButton.setBounds(20, yPosition, labelWidth, elementHeight);
-//        editButton.addActionListener(this);
-//        gbc = new GridBagConstraints();
-//        gbc.fill = GridBagConstraints.NONE;
-//        frame.add(editButton);
-//
-//        saveButtonLabel = "Save";
-//        saveButton = new JButton(saveButtonLabel);
-//        saveButton.setFont(buttonFont);
-//        saveButton.setBounds(120, yPosition, labelWidth, elementHeight);
-//        saveButton.addActionListener(this);
-//        saveButton.setEnabled(false);
-//        frame.add(saveButton);
-//
-//        closeButtonLabel = "Close";
-//        closeButton = new JButton(closeButtonLabel);
-//        closeButton.setFont(buttonFont);
-//        closeButton.setBounds(220, yPosition, labelWidth, elementHeight);
-//        closeButton.addActionListener(this);
-//        frame.add(closeButton);
-
         frame.addWindowListener(new FrameClosingAdapter());
 
         this.contactID = contactID;
