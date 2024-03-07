@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Deleted some old, unused code.">
+    <list default="true" id="d72dbd02-31e7-4c28-9bd6-d7ac208a6848" name="Changes" comment="Renamed main classe and GUI class.&#10;&#10;Updated L&amp;F package.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/garethrichings33/ContactsBookGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +38,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3668993",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -50,9 +49,13 @@
       <recent name="com.github.garethrichings33" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.AddressBook [install]">
+  <component name="RunManager" selected="JAR Application.AddressBook-1.0-SNAPSHOT.jar">
     <configuration name="AddressBook-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/AddressBook-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AddressBook.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/AddressBook.jar" />
       <method v="2" />
     </configuration>
     <configuration name="AddressBook [clean]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
@@ -105,14 +108,42 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="AddressBook [package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="JAR Application.AddressBook.jar" />
       <item itemvalue="JAR Application.AddressBook-1.0-SNAPSHOT.jar" />
+      <item itemvalue="Maven.AddressBook [package]" />
       <item itemvalue="Maven.AddressBook [install]" />
       <item itemvalue="Maven.AddressBook [clean]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JAR Application.AddressBook-1.0-SNAPSHOT.jar" />
+        <item itemvalue="JAR Application.AddressBook.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709748702503</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Renamed main classe and GUI class.&#10;&#10;Updated L&amp;F package.">
+      <option name="closed" value="true" />
+      <created>1709750403086</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709750403086</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -238,6 +277,7 @@
     <MESSAGE value="New L&amp;F added.&#10;&#10;Improved layout of main frame." />
     <MESSAGE value="Added gridbaglayout to contact frames." />
     <MESSAGE value="Deleted some old, unused code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted some old, unused code." />
+    <MESSAGE value="Renamed main classe and GUI class.&#10;&#10;Updated L&amp;F package." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed main classe and GUI class.&#10;&#10;Updated L&amp;F package." />
   </component>
 </project>
